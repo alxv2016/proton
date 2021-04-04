@@ -49,7 +49,7 @@ export class SvgObjectComponent implements AfterViewInit {
         duration: 6,
         repeat: -1,
         yoyo: true,
-        yoyoEase: true,
+        // yoyoEase: true,
         stagger: 0.125,
       },
     });
@@ -71,48 +71,65 @@ export class SvgObjectComponent implements AfterViewInit {
         },
         {
           scale: 2.25,
-          y: 20,
-          rotate: 360,
         },
         0
+      )
+      .to(
+        circles,
+        {
+          rotate: 360,
+        },
+        4.25
       )
       .fromTo(
         circles2,
         {
-          x: -0.5,
-          y: -0.5,
+          x: -0.75,
+          y: -0.75,
           scale: 0.98,
           stroke: '#FF447C',
           opacity: 1,
         },
         {
-          x: 0.5,
-          y: 0.5,
+          x: 0.75,
+          y: 0.75,
           scale: 2.25,
           stroke: '#ffffff',
-          rotate: 360,
           opacity: 0,
         },
         0
       )
+      .to(
+        circles2,
+        {
+          rotate: 360,
+        },
+        4.25
+      )
       .fromTo(
         circles3,
         {
-          x: 0.5,
-          y: 0.5,
+          x: 0.75,
+          y: 0.75,
           scale: 0.98,
           opacity: 1,
           stroke: '#3FFFA3',
         },
         {
-          x: -0.5,
-          y: -0.5,
+          x: -0.75,
+          y: -0.75,
           scale: 2.25,
           stroke: '#ffffff',
-          rotate: 360,
           opacity: 0,
         },
         0
+      )
+      .to(
+        circles3,
+        {
+          rotate: 360,
+        },
+        4.25
       )
       .to(
         this.theLight.nativeElement,
@@ -121,13 +138,13 @@ export class SvgObjectComponent implements AfterViewInit {
           y: 20,
         },
         0.125
-      )
-      .to(
-        this.void.nativeElement,
-        {
-          scale: 1.25,
-        },
-        0
       );
+    // .to(
+    //   this.void.nativeElement,
+    //   {
+    //     scale: 1.25,
+    //   },
+    //   0
+    // );
   }
 }
