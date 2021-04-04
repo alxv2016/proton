@@ -1,0 +1,71 @@
+@import '../../../scss/00_imports';
+
+:host-context(.c-art-frame) {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: color('light');
+  @include elevate-5(color('dark'), 0.095);
+  border-radius: 0.125rem;
+  overflow: hidden;
+}
+
+.c-art-frame {
+  &__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    height: 350px;
+    border: $spacing--md solid color('light');
+    background-color: color('darker');
+    overflow: hidden;
+    @include breakpoint(md) {
+      width: 600px;
+      height: 600px;
+    }
+  }
+  &__info {
+    position: relative;
+    width: 100%;
+    background-color: color('light');
+    padding: $spacing--xl;
+    color: color('carbon');
+    .display {
+      color: color('dark');
+    }
+    &-footer {
+      position: relative;
+      display: flex;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: $spacing--xl;
+    }
+  }
+}
+
+.art-piece-number {
+  display: block;
+  line-height: 1.25;
+  font-size: $title--3;
+  font-family: font-family('mono');
+  font-weight: font-weight('medium');
+  letter-spacing: -2px;
+  color: color('carbon');
+}
+
+.artist-brand {
+  position: relative;
+  height: 18px;
+  width: auto;
+  flex-shrink: 0;
+  svg {
+    width: inherit;
+    height: inherit;
+    fill: color('carbon');
+  }
+}

@@ -1,0 +1,40 @@
+@import '../../../scss/00_imports';
+:host-context(.c-svg-object) {
+  --a-start: 0%;
+  --a-end: 0%;
+  --progress-start: 10%;
+  --progress-end: 70%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  &:before {
+    position: absolute;
+    z-index: 4;
+    content: '';
+    height: 100%;
+    width: 100%;
+    background: radial-gradient(
+      circle,
+      rgba(color('darker'), 0) var(--progress-start),
+      rgba(color('darker'), 0.96) var(--progress-end)
+    );
+    mask: $noiseFilter,
+      radial-gradient(
+        circle,
+        rgba(color('carbon'), 0) var(--progress-start),
+        rgba(color('carbon'), 1) var(--progress-end)
+      );
+  }
+}
+
+.the-grid {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  height: 90%;
+  width: 90%;
+}
