@@ -44,101 +44,47 @@ export class SvgObjectComponent implements AfterViewInit {
 
     const staggering = gsap.timeline({
       defaults: {
-        transformOrigin: 'top center',
-        ease: 'power3.inOut',
-        duration: 6,
+        ease: 'elastic',
+        transformOrigin: 'center center',
         repeat: -1,
+        duration: 4,
         yoyo: true,
-        // yoyoEase: true,
-        stagger: 0.125,
+        yoyoEase: true,
       },
     });
 
     staggering
-      .to(
-        this.element.nativeElement,
-        {
-          '--progress-end': '40%',
-          ease: 'power2.inOut',
-        },
-        0
-      )
+      // .to(
+      //   this.element.nativeElement,
+      //   {
+      //     '--progress-end': '40%',
+      //     ease: 'power2.inOut',
+      //   },
+      //   0
+      // )
       .fromTo(
         circles,
         {
-          scale: 0.98,
-          stroke: '#ffffff',
+          y: -6,
+          x: -6,
+          rotate: -2,
         },
         {
-          scale: 2.25,
-        },
-        0
-      )
-      .to(
-        circles,
-        {
-          rotate: 360,
-        },
-        4.25
-      )
-      .fromTo(
-        circles2,
-        {
-          x: -0.75,
-          y: -0.75,
-          scale: 0.98,
-          stroke: '#FF447C',
-          opacity: 1,
-        },
-        {
-          x: 0.75,
-          y: 0.75,
-          scale: 2.25,
-          stroke: '#ffffff',
-          opacity: 0,
-        },
-        0
-      )
-      .to(
-        circles2,
-        {
-          rotate: 360,
-        },
-        4.25
-      )
-      .fromTo(
-        circles3,
-        {
-          x: 0.75,
-          y: 0.75,
-          scale: 0.98,
-          opacity: 1,
-          stroke: '#3FFFA3',
-        },
-        {
-          x: -0.75,
-          y: -0.75,
-          scale: 2.25,
-          stroke: '#ffffff',
-          opacity: 0,
-        },
-        0
-      )
-      .to(
-        circles3,
-        {
-          rotate: 360,
-        },
-        4.25
-      )
-      .to(
-        this.theLight.nativeElement,
-        {
-          scale: 0.25,
-          y: 20,
-        },
-        0.125
+          y: 6,
+          x: 6,
+          rotate: 2,
+          stagger: 0.125,
+        }
       );
+
+    // .to(
+    //   this.theLight.nativeElement,
+    //   {
+    //     scale: 0.25,
+    //     y: 20,
+    //   },
+    //   0.125
+    // );
     // .to(
     //   this.void.nativeElement,
     //   {

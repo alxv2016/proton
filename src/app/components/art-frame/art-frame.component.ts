@@ -8,7 +8,7 @@ import {Component, HostBinding, OnInit} from '@angular/core';
 export class ArtFrameComponent {
   artworkDescr = 'The motion art experiments';
   artworkTitle = 'Enter the void.';
-  artworkNum = '001';
+  artworkNum = '002';
 
   @HostBinding('class') class = 'c-art-frame';
   constructor() {}
