@@ -18,11 +18,12 @@ import {ScrollTrigger} from 'gsap/ScrollTrigger';
 })
 export class SvgObjectComponent implements AfterViewInit {
   @HostBinding('class') class = 'c-svg-object';
-  @ViewChild('void') void!: ElementRef;
+  @ViewChild('proton') proton!: ElementRef;
   @ViewChild('theLight') theLight!: ElementRef;
   @ViewChildren('circle', {read: ElementRef}) circle!: QueryList<ElementRef>;
   @ViewChildren('circle2', {read: ElementRef}) circle2!: QueryList<ElementRef>;
   @ViewChildren('circle3', {read: ElementRef}) circle3!: QueryList<ElementRef>;
+  @ViewChildren('circle4', {read: ElementRef}) circle4!: QueryList<ElementRef>;
   constructor(private element: ElementRef, private render: Renderer2) {
     gsap.registerPlugin(ScrollTrigger);
   }
@@ -42,26 +43,43 @@ export class SvgObjectComponent implements AfterViewInit {
       accent2: '#FF429D',
     };
 
+    gsap.fromTo(
+      circles,
+      {
+        strokeDasharray: 439,
+        strokeDashoffset: 80 * 2,
+        strokeLinecap: 'round',
+      },
+      {
+        strokeDasharray: 439 / 2,
+        strokeDashoffset: 439 * 2,
+        strokeLinecap: 'round',
+        repeat: -1,
+        duration: 2.125,
+        ease: 'back',
+        stroke: 'cyan',
+        yoyo: true,
+        yoyoEase: true,
+        stagger: 0.025,
+      }
+    );
+
     const staggering = gsap.timeline({
       defaults: {
         ease: 'elastic',
         transformOrigin: 'center center',
         repeat: -1,
-        duration: 4,
+        duration: 1.75,
         yoyo: true,
         yoyoEase: true,
       },
     });
 
     staggering
-      // .to(
-      //   this.element.nativeElement,
-      //   {
-      //     '--progress-end': '40%',
-      //     ease: 'power2.inOut',
-      //   },
-      //   0
-      // )
+      .to(this.element.nativeElement, {
+        '--progress-start': '100%',
+        ease: 'power2.inOut',
+      })
       .fromTo(
         circles,
         {
@@ -74,23 +92,51 @@ export class SvgObjectComponent implements AfterViewInit {
           x: 6,
           rotate: 2,
           stagger: 0.125,
-        }
+        },
+        0
+      )
+      .fromTo(
+        circles2,
+        {
+          y: -6,
+          x: -6,
+          rotate: -2,
+          fill: '#0EFFF1',
+        },
+        {
+          y: 6,
+          x: 6,
+          rotate: 2,
+          stagger: 0.135,
+          fill: '#0EFFF1',
+        },
+        0
+      )
+      .fromTo(
+        circles3,
+        {
+          y: -6,
+          x: -6,
+          rotate: -2,
+          fill: '#FF164E',
+        },
+        {
+          y: 6,
+          x: 6,
+          rotate: 2,
+          stagger: 0.145,
+          fill: '#FF164E',
+        },
+        0
+      )
+      .to(
+        this.proton.nativeElement,
+        {
+          y: 20,
+          duration: 2,
+          ease: 'none',
+        },
+        0
       );
-
-    // .to(
-    //   this.theLight.nativeElement,
-    //   {
-    //     scale: 0.25,
-    //     y: 20,
-    //   },
-    //   0.125
-    // );
-    // .to(
-    //   this.void.nativeElement,
-    //   {
-    //     scale: 1.25,
-    //   },
-    //   0
-    // );
   }
 }
