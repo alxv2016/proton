@@ -9,6 +9,7 @@ export class ArtFrameComponent {
   artworkDescr = 'The kinetic design experiments';
   artworkTitle = 'Proton Energy.';
   artworkNum = '003';
+  warning = 'Warning your computer fan may spin at an increased RPM 🔥🔥🔥';
 
   @HostBinding('class') class = 'c-art-frame';
   constructor() {}
